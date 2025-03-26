@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday KKERAITH!</title>
+    <style>
+        :root {
+            --doraemon-blue: #00a3d9;
+            --doraemon-red: #ff0000;
+            --doraemon-yellow: #ffd700;
+        }
+
+        body {
+            background: linear-gradient(45deg, #87CEEB, #b19cd9);
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        /* ======== DORAEMON 3D MODEL ======== */
+        .doraemon-container {
+            position: relative;
+            width: 500px;
+            height: 700px;
+            margin: 50px auto;
+            perspective: 1000px;
+        }
+
+        .doraemon {
+            position: absolute;
+            width: 400px;
+            height: 600px;
+            transform-style: preserve-3d;
+            animation: float 4s ease-in-out infinite, sway 6s infinite;
+        }
+
+        /* HEAD SECTION */
+        .head {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            background: var(--doraemon-blue);
+            border-radius: 50%;
+            transform: translateZ(20px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .face {
+            position: absolute;
+            width: 300px;
+            height: 250px;
+            background: white;
+            border-radius: 45% 45% 50% 50%;
+            top: 80px;
+            left: 50px;
+            transform: translateZ(30px);
+        }
+
+        /* EYES WITH DETAILED PUPILS */
+        .eyes {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            top: 50px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .left-eye { left: 60px; }
+        .right-eye { right: 60px; }
+
+        .pupil {
+            width: 35px;
+            height: 50px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            top: 25px;
+            left: 22px;
+            animation: blink 5s infinite, look-around 8s infinite;
+        }
+
+        .eye-sparkle {
+            width: 10px;
+            height: 15px;
+            background: white;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            transform: rotate(45deg);
+        }
+
+        /* ANIMATED NOSE */
+        .nose {
+            width: 45px;
+            height: 45px;
+            background: var(--doraemon-red);
+            border-radius: 50%;
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%) translateZ(40px);
+            animation: glow 2s infinite alternate;
+            box-shadow: 0 0 20px rgba(255,0,0,0.3);
+        }
+
+        /* DYNAMIC MOUTH */
+        .mouth {
+            width: 220px;
+            height: 100px;
+            border: 5px solid #000;
+            border-radius: 0 0 100px 100px;
+            border-top: 0;
+            position: absolute;
+            top: 200px;
+            left: 90px;
+            transform: translateZ(35px);
+            animation: speak 0.5s infinite alternate;
+        }
+
+        /* MAGIC BELL */
+        .bell {
+            width: 50px;
+            height: 50px;
+            background: var(--doraemon-yellow);
+            border-radius: 50%;
+            position: absolute;
+            top: 300px;
+            left: 175px;
+            transform: translateZ(45px);
+            animation: 
+                swing 3s ease-in-out infinite,
+                bell-shine 1.5s infinite;
+        }
+
+        .bell::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background: #aaa;
+            top: -10px;
+            left: 20px;
+        }
+
+        /* BODY & POCKET */
+        .body {
+            position: absolute;
+            width: 320px;
+            height: 250px;
+            background: var(--doraemon-blue);
+            top: 350px;
+            left: 40px;
+            border-radius: 0 0 50px 50px;
+            transform: translateZ(20px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .pocket {
+            position: absolute;
+            width: 180px;
+            height: 140px;
+            background: white;
+            border: 4px solid #000;
+            border-radius: 20px;
+            top: 380px;
+            left: 110px;
+            transform: translateZ(30px);
+        }
+
+        /* ANIMATED HANDS */
+        .hands {
+            position: absolute;
+            width: 100px;
+            height: 200px;
+            top: 320px;
+        }
+
+        .left-hand {
+            left: -40px;
+            animation: wave-left 2s infinite;
+        }
+
+        .right-hand {
+            right: -40px;
+            animation: wave-right 2s infinite;
+        }
+
+        /* ======== ANIMATIONS ======== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        @keyframes blink {
+            0%, 90%, 100% { height: 50px; }
+            92%, 98% { height: 5px; }
+        }
+
+        @keyframes swing {
+            0% { transform: translateZ(45px) rotate(10deg); }
+            50% { transform: translateZ(45px) rotate(-10deg); }
+            100% { transform: translateZ(45px) rotate(10deg); }
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px var(--doraemon-red); }
+            to { box-shadow: 0 0 30px var(--doraemon-red); }
+        }
+
+        @keyframes speak {
+            from { height: 100px; }
+            to { height: 90px; }
+        }
+
+        /* ======== BIRTHDAY MESSAGE ======== */
+        .birthday-card {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            animation: card-enter 1s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #ff0000, #2196f3);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* ======== SPECIAL EFFECTS ======== */
+        .magic-dust {
+            position: fixed;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .confetti {
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100%) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- DORAEMON STRUCTURE -->
+    <div class="doraemon-container">
+        <div class="doraemon">
+            <div class="head"></div>
+            <div class="face"></div>
+            <div class="eyes left-eye">
+                <div class="pupil"><div class="eye-sparkle"></div></div>
+            </div>
+            <div class="eyes right-eye">
+                <div class="pupil"><div class="eye-sparkle"></div></div>
+            </div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+            <div class="bell"></div>
+            <div class="body"></div>
+            <div class="pocket"></div>
+            <div class="hands left-hand">✋</div>
+            <div class="hands right-hand">✋</div>
+        </div>
+    </div>
+
+    <!-- BIRTHDAY MESSAGE -->
+    <div class="birthday-card">
+        <h1>🎉 HAPPY BIRTHDAY KKERAITH! 🎉</h1>
+        <p style="font-size: 1.5em;">May your day be filled with Doraemon's magic! ✨</p>
+    </div>
+
+    <!-- SPECIAL EFFECTS -->
+    <div class="magic-dust"></div>
+
+    <script>
+        // Create magical particles
+        function createMagic() {
+            const colors = ['#ff0000', '#00a3d9', '#ffd700', '#ffffff'];
+            for(let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'confetti';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.width = Math.random() * 10 + 5 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                document.querySelector('.magic-dust').appendChild(particle);
+            }
+        }
+
+        // Interactive elements
+        document.addEventListener('click', () => {
+            createMagic();
+            new Audio('https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg').play();
+        });
+
+        // Initial magic
+        setInterval(createMagic, 3000);
+    </script>
+</body>
